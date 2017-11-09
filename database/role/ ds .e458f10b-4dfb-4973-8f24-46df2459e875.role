@@ -1,0 +1,17 @@
+id=e458f10b-4dfb-4973-8f24-46df2459e875
+name(姓名)= ds 
+gender(性别)=male
+vocation(职业)=ds
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=0
+attack(攻击力)=1
+defense(防御力)=0
+physique(体质)=1
+power(力量)=1
+nimble(敏捷)=1
+intelligence(智力)=1
+attackDistance(攻击距离)=1
+attackRate(攻击频率)=1
+attackSpeed(攻击速度)=1
+pace(移动速度)=1
