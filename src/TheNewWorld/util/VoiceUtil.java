@@ -14,8 +14,8 @@ public class VoiceUtil {
 	
 	public static void speak(String info) {
 		
-		//ActiveXComponent axc = new ActiveXComponent("Sapi.SpVoice");
-		ActiveXComponent axc = new ActiveXComponent("ScriptControl");
+		ActiveXComponent axc = new ActiveXComponent("Sapi.SpVoice");
+		//ActiveXComponent axc = new ActiveXComponent("ScriptControl");
 		Dispatch dispatch = axc.getObject();
 		try {
 			//音量0-100
