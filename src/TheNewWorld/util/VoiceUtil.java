@@ -8,7 +8,7 @@ public class VoiceUtil {
 	
 	public static void main(String[] args) {
 		//System.out.println(java.library.path);
-		speak("你好");
+		speak("滚。。。。。。");
 	}
 	
 	
@@ -21,7 +21,7 @@ public class VoiceUtil {
 			//音量0-100
 			axc.setProperty("Volume", new Variant(100));
 			//朗读速度-10到+10
-			axc.setProperty("Rate", new Variant(-2));
+			axc.setProperty("Rate", new Variant(2));
 			Variant defalutVoice = axc.getProperty("Voice");
 			Dispatch dispDefaultVoice = defalutVoice.toDispatch();
 			Variant allVoices = Dispatch.call(dispatch, "GetVoices");
@@ -30,6 +30,8 @@ public class VoiceUtil {
 			ActiveXComponent voiceActivex = new ActiveXComponent(dispDefaultVoice);
 			ActiveXComponent setVoiceActivex = new ActiveXComponent(setVoice);
 			Variant item = Dispatch.call(setVoiceActivex, "GetDescription");
+			
+			info = "<lang langid='804'>"+info+"</lang>";
 			//执行朗读
 			Dispatch.call(dispatch, "Speak", new Variant(info));
 		} catch (Exception e) {

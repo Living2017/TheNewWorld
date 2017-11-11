@@ -8,11 +8,14 @@ import TheNewWorld.MainApp;
 import TheNewWorld.util.DateUtil;
 import TheNewWorld.util.RoleUtil;
 import TheNewWorld.util.SoundUtil;
+import TheNewWorld.util.VoiceUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class MainController {
 	
@@ -40,6 +43,11 @@ public class MainController {
 	//雷电术
 	@SuppressWarnings("unused")
 	private static String THUNDER_ATTACK = "thunder";
+	
+	
+	
+	
+	
 	
 	@FXML
 	public void handleButtonConfirm() {
@@ -76,10 +84,12 @@ public class MainController {
 		/*	if(THUNDER_ATTACK.equals(attacklInfo.toLowerCase())){
 				
 			}*/
+			VoiceUtil.speak(attacklInfo);
 			if(su.playSound(attacklInfo)) {
 				showInfo="技能释放成功";
 			}else {
-				showInfo="技能释放失败";
+				showInfo="那是一个技能？";
+				VoiceUtil.speak("呵呵");
 			}
 			
 		}
@@ -90,6 +100,7 @@ public class MainController {
 		
 		
 		textAreaShow.appendText(showInfo);
+		textFieldInput.setText("");
 	}
 	
 	public void attack(String attackType) {
@@ -140,4 +151,14 @@ public class MainController {
 			}
 		}
 	}
+	
+	@FXML
+	public void handleKeyboardEvent(KeyEvent event) {
+		if(event.getCode() == KeyCode.ENTER) {
+			handleButtonConfirm();
+		}
+	}
+	
+	
+	
 }
