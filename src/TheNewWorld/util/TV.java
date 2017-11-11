@@ -27,10 +27,12 @@ public class TV {
 	        Dispatch dispVoices = allVoices.toDispatch();
 
 	        Dispatch setvoice = Dispatch.call(dispVoices, "Item", new Variant(1)).toDispatch();
-	        ActiveXComponent voiceActivex = new ActiveXComponent(dispdefaultVoice);
+	        @SuppressWarnings("unused")
+			ActiveXComponent voiceActivex = new ActiveXComponent(dispdefaultVoice);
 	        ActiveXComponent setvoiceActivex = new ActiveXComponent(setvoice);
 
-	        Variant item = Dispatch.call(setvoiceActivex, "GetDescription");
+	        @SuppressWarnings("unused")
+			Variant item = Dispatch.call(setvoiceActivex, "GetDescription");
 	        // 执行朗读
 	        Dispatch.call(sapo, "Speak", new Variant("曾小明小朋友，早上好"));
 

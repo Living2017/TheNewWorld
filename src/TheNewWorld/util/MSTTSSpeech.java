@@ -50,7 +50,7 @@ public class MSTTSSpeech {
 			int count = Integer.valueOf(Dispatch.call(voiceItems, "Count").toString());
 			if (count > 0) {
 				Dispatch voiceItem = Dispatch.call(voiceItems, "Item", new Variant(this.voice)).toDispatch();
-				Dispatch.put(spVoice, "Voice", "Microsoft Simplified Chinese");
+				Dispatch.put(spVoice, "Voice", voiceItem);
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

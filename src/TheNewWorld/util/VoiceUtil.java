@@ -27,8 +27,10 @@ public class VoiceUtil {
 			Variant allVoices = Dispatch.call(dispatch, "GetVoices");
 			Dispatch dispVoices = allVoices.toDispatch();
 			Dispatch setVoice = Dispatch.call(dispVoices, "Item", new Variant(1)).toDispatch();
+			@SuppressWarnings("unused")
 			ActiveXComponent voiceActivex = new ActiveXComponent(dispDefaultVoice);
 			ActiveXComponent setVoiceActivex = new ActiveXComponent(setVoice);
+			@SuppressWarnings("unused")
 			Variant item = Dispatch.call(setVoiceActivex, "GetDescription");
 			
 			info = "<lang langid='804'>"+info+"</lang>";

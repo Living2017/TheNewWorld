@@ -1,12 +1,8 @@
 package TheNewWorld.util;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-
-import javafx.scene.image.Image;
 
 public class Test {
 
