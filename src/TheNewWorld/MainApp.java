@@ -22,11 +22,9 @@ public class MainApp extends Application {
 	public Parent parent;
 	private Stage primaryStage;
 	private Stage dialogStage;
-	private int show;
-
+	
 	public MainApp() {
 		userDir = System.getProperty("user.dir");
-		show = 0;
 	}
 
 	@Override
@@ -48,16 +46,8 @@ public class MainApp extends Application {
 			parent.setOnKeyReleased(e->{
 				TextField tf = (TextField) parent.lookup("#textFieldInput");
 				if((!tf.isFocused()) && (e.getCode() == KeyCode.C)) {
-			
-				}
-				
-				if (e.getCode() == KeyCode.C) {
 					mc.showRoleDetail(mc.getTextFieldInput().getText());
-					if(show%2==0) {
-						dialogStage.close();
-						show ++ ;
-					}
-				}
+				} 
 			});
 			
 			primaryStage.setTitle("新世界-今日火爆开启");
@@ -80,7 +70,13 @@ public class MainApp extends Application {
 		loader.setLocation(MainApp.class.getResource("view/Role.fxml"));
 		try {
 			GridPane gp = (GridPane) loader.load();
-
+			
+			gp.setOnKeyReleased(e->{
+				if(e.getCode() == KeyCode.C) {
+					dialogStage.close();
+				}
+			});
+			
 			// Create the dialog Stage.
 			dialogStage = new Stage();
 			dialogStage.setTitle("人物属性");
@@ -94,6 +90,8 @@ public class MainApp extends Application {
 			controller.setDialogStage(dialogStage);
 			controller.setRole(role);
 			dialogStage.setResizable(false);
+			dialogStage.setAlwaysOnTop(false);
+			
 			dialogStage.show();
 
 		} catch (Exception e) {

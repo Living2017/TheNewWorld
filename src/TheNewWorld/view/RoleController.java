@@ -49,7 +49,9 @@ public class RoleController {
 	@FXML
 	private Label pace;
 	
+	@SuppressWarnings("unused")
 	private Stage dialogStage;
+	@SuppressWarnings("unused")
 	private Role role;
 	
 

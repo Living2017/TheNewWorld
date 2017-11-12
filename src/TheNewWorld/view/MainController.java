@@ -141,7 +141,6 @@ public class MainController {
 			try {
 				FileInputStream fi = new FileInputStream(f);
 				InputStreamReader is = new InputStreamReader(fi);
-				String roleInfo = "";
 				String roleInfoTemp = null;
 	/*				
 
@@ -176,12 +175,8 @@ public class MainController {
 					}
 					method.invoke(role, arguments);
 					
-					roleInfo +="\r\n"+ roleInfoTemp;
 				}
 				ma.ShowRoleDetail(role);
-				System.out.println("---------");
-				System.out.println(roleInfo);
-				System.out.println("---------");
 
 			} catch (Exception e) {
 				e.printStackTrace();
