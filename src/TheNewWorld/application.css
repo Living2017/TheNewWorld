@@ -1,1 +1,82 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root {  
+     -fx-background-image: url("../images/热血传奇十周年.jpg");  
+}  
+
+AnchorPane{
+       -fx-background-color: transparent;
+}
+Pane{
+       -fx-background-color: transparent;
+}
+children{
+       -fx-background-color: transparent;
+}
+
+#textAreaShow{
+ 	   -fx-font: 20px "fantasy";
+ 	   -fx-padding: 10;
+       -fx-background-color: transparent;
+       -fx-text-fill: #FFE400;
+       -fx-alignment: bottom-center ;
+} 
+
+#textAreaShow:hover {
+       -fx-alignment: bottom-center ;
+} 
+#textAreaShow .content:hover {
+       -fx-alignment: bottom-center ;
+} 
+
+#textAreaShow .content{
+	
+	/*
+	-fx-background-color: transparent;
+	 */
+    -fx-background-image: url("../images/背景.jpg");
+	-fx-background-size: 100%;
+	-fx-background-repeat: repeat;
+	-fx-background-position: 0%;
+}
+/**
+ * -fx-font-family (defined in javafx.scene.text.Text)
+
+syntax = <font-family>
+
+
+The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used: 
+'serif' (e.g., Times) 
+'sans-serif' (e.g., Helvetica) 
+'cursive' (e.g., Zapf-Chancery) 
+'fantasy' (e.g., Western) 
+'monospace' (e.g., Courier) 
+ 
+ “线”（例如，倍）
+“sans-serif”（例如，黑体）
+“草书”（例如，Zapf办公处）
+“幻想”（例如，西方）
+“等宽字体”（例如，快递）
+ * 
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

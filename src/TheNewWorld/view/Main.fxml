@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheNewWorld.view.MainController">
+<AnchorPane prefHeight="666.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheNewWorld.view.MainController">
    <children>
-      <Pane layoutY="-36.0" prefHeight="700.0" prefWidth="1000.0">
+      <Pane>
          <children>
             <Label fx:id="label1" layoutX="14.0" layoutY="48.0" text="角色" />
             <Button fx:id="buttonConfirm" layoutX="490.0" layoutY="649.0" mnemonicParsing="false" onMouseClicked="#handleButtonConfirm" text="确认" />
