@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+@SuppressWarnings("unused")
 public class MainApp extends Application {
 
 	public static String userDir;
@@ -27,12 +28,13 @@ public class MainApp extends Application {
 	private static final int FIXED_WIDTH = 910;
 	private static final int FIXED_X = 43;
 	private static final int FIXED_Y = 118;
+	private static String  combinationKey1;
+	private static String  combinationKey2;
 	
 	public MainApp() {
 		userDir = System.getProperty("user.dir");
 	}
 
-	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -49,7 +51,17 @@ public class MainApp extends Application {
 			
 			parent = loader.getRoot();
 			
+			parent.setOnKeyPressed(e->{
+				if(e.isControlDown()) {
+					combinationKey1 = "ControlDown";
+				}
+			});
+			
 			parent.setOnKeyReleased(e->{
+				if(!e.isControlDown()) {
+					combinationKey1 = null;
+				}
+				
 				TextArea ta = (TextArea) parent.lookup("#textAreaShow");
 				//TextField tf = (TextField) parent.lookup("#textFieldInput");
 				
@@ -60,17 +72,22 @@ public class MainApp extends Application {
 						keyNum = Integer.valueOf(kc.getName());
 					} catch (Exception e2) {
 					}
-					
 					if(keyNum == null) {
 						if(kc == KeyCode.C) {
 							mc.showRoleDetail(mc.getTextFieldInput().getText());
+						}else if("ControlDown".equals(combinationKey1) && kc==KeyCode.S){
+							mc.saveInfo(ta.getText());
+							ta.appendText(mc.getShowInfo());
 						}
-					}else if(keyNum == 0){
-						ta.setPrefHeight(FIXED_HEIGHT);
-						ta.setLayoutY(FIXED_Y);
+						
 					}else {
-						ta.setPrefHeight(FIXED_HEIGHT*0.1*keyNum);
-						ta.setLayoutY(FIXED_Y+FIXED_HEIGHT*0.1*(10-keyNum));
+						if(keyNum == 0){
+							ta.setPrefHeight(FIXED_HEIGHT);
+							ta.setLayoutY(FIXED_Y);
+						}else {
+							ta.setPrefHeight(FIXED_HEIGHT*0.1*keyNum);
+							ta.setLayoutY(FIXED_Y+FIXED_HEIGHT*0.1*(10-keyNum));
+						}
 					}
 					
 				}

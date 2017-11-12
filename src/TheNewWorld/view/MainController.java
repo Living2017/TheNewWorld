@@ -250,6 +250,14 @@ public class MainController {
 		this.textFieldInput = textFieldInput;
 	}
 
+	public String getShowInfo() {
+		return showInfo;
+	}
+
+	public void setShowInfo(String showInfo) {
+		this.showInfo = showInfo;
+	}
+
 	
 	
 }
