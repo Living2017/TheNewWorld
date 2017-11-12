@@ -9,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -22,11 +23,16 @@ public class MainApp extends Application {
 	public Parent parent;
 	private Stage primaryStage;
 	private Stage dialogStage;
+	private static final int FIXED_HEIGHT = 483;
+	private static final int FIXED_WIDTH = 910;
+	private static final int FIXED_X = 43;
+	private static final int FIXED_Y = 118;
 	
 	public MainApp() {
 		userDir = System.getProperty("user.dir");
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -44,10 +50,31 @@ public class MainApp extends Application {
 			parent = loader.getRoot();
 			
 			parent.setOnKeyReleased(e->{
-				TextField tf = (TextField) parent.lookup("#textFieldInput");
-				if((!tf.isFocused()) && (e.getCode() == KeyCode.C)) {
-					mc.showRoleDetail(mc.getTextFieldInput().getText());
-				} 
+				TextArea ta = (TextArea) parent.lookup("#textAreaShow");
+				//TextField tf = (TextField) parent.lookup("#textFieldInput");
+				
+				if(ta.isFocused()) {
+					KeyCode kc = e.getCode();
+					Integer keyNum = null;
+					try {
+						keyNum = Integer.valueOf(kc.getName());
+					} catch (Exception e2) {
+					}
+					
+					if(keyNum == null) {
+						if(kc == KeyCode.C) {
+							mc.showRoleDetail(mc.getTextFieldInput().getText());
+						}
+					}else if(keyNum == 0){
+						ta.setPrefHeight(FIXED_HEIGHT);
+						ta.setLayoutY(FIXED_Y);
+					}else {
+						ta.setPrefHeight(FIXED_HEIGHT*0.1*keyNum);
+						ta.setLayoutY(FIXED_Y+FIXED_HEIGHT*0.1*(10-keyNum));
+					}
+					
+				}
+				
 			});
 			
 			primaryStage.setTitle("新世界-今日火爆开启");
