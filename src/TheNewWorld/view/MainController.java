@@ -3,7 +3,6 @@ package TheNewWorld.view;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,7 +22,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import jdk.management.resource.internal.inst.FileInputStreamRMHooks;
 
 public class MainController {
 
@@ -31,7 +29,6 @@ public class MainController {
 		init();
 	}
 
-	@SuppressWarnings("unused")
 	private MainApp ma;
 
 	public void setMa(MainApp ma) {
@@ -154,6 +151,7 @@ public class MainController {
 					roleInfo += (char) i;
 				}
 	*/			
+				@SuppressWarnings("resource")
 				BufferedReader br = new BufferedReader(is);
 				Role role = Role.class.newInstance();
 				while((roleInfoTemp=br.readLine())!=null){
@@ -246,8 +244,17 @@ public class MainController {
 		if (event.getCode() == KeyCode.ENTER) {
 			handleButtonConfirm();
 		}
+		 
 	}
 
+	public TextField getTextFieldInput() {
+		return textFieldInput;
+	}
 
+	public void setTextFieldInput(TextField textFieldInput) {
+		this.textFieldInput = textFieldInput;
+	}
+
+	
 	
 }
