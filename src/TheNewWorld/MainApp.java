@@ -21,9 +21,12 @@ public class MainApp extends Application {
 	public FXMLLoader loader;
 	public Parent parent;
 	private Stage primaryStage;
+	private Stage dialogStage;
+	private int show;
 
 	public MainApp() {
 		userDir = System.getProperty("user.dir");
+		show = 0;
 	}
 
 	@Override
@@ -50,6 +53,10 @@ public class MainApp extends Application {
 				
 				if (e.getCode() == KeyCode.C) {
 					mc.showRoleDetail(mc.getTextFieldInput().getText());
+					if(show%2==0) {
+						dialogStage.close();
+						show ++ ;
+					}
 				}
 			});
 			
@@ -75,7 +82,7 @@ public class MainApp extends Application {
 			GridPane gp = (GridPane) loader.load();
 
 			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
+			dialogStage = new Stage();
 			dialogStage.setTitle("人物属性");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
@@ -86,6 +93,7 @@ public class MainApp extends Application {
 			RoleController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setRole(role);
+			dialogStage.setResizable(false);
 			dialogStage.show();
 
 		} catch (Exception e) {
