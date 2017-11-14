@@ -36,13 +36,13 @@ public class MainController {
 	}
 
 	@FXML
+	private Label Role1;
+	@FXML
 	private TextArea textAreaShow;
 	@FXML
 	private TextField textFieldInput;
 	@FXML
 	private Button buttonConfirm;
-	@FXML
-	private Label label1;
 
 	private String showInfo;
 	private String InputInfo;
@@ -131,7 +131,8 @@ public class MainController {
 		}
 
 		textAreaShow.appendText(showInfo);
-		textFieldInput.setText("");
+		//这个代码啊啊啊啊，半夜1：38了啊
+		//textFieldInput.setText("");
 	}
 
 	public void showRoleDetail(String name) {
@@ -258,6 +259,23 @@ public class MainController {
 		this.showInfo = showInfo;
 	}
 
+	public static HashMap<String, String> getRoleNamePathMap() {
+		return roleNamePathMap;
+	}
+
+	public static void setRoleNamePathMap(HashMap<String, String> roleNamePathMap) {
+		MainController.roleNamePathMap = roleNamePathMap;
+	}
+
+	public Label getRole1() {
+		return Role1;
+	}
+
+	public void setRole1(Label role1) {
+		Role1 = role1;
+	}
+
+	
 	
 	
 }

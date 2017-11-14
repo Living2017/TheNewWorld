@@ -1,5 +1,7 @@
 package TheNewWorld;
 
+import java.util.HashMap;
+
 import TheNewWorld.model.Role;
 import TheNewWorld.view.MainController;
 import TheNewWorld.view.RoleController;
@@ -39,7 +41,8 @@ public class MainApp extends Application {
 		userDir = System.getProperty("user.dir");
 	}
 
-	@Override
+	@SuppressWarnings("static-access")
+@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		try {
@@ -145,17 +148,40 @@ public class MainApp extends Application {
 				if(e.isControlDown()) {
 					combinationKey1 = "ControlDown";
 				}
+				
 			});
 			
 			parent.setOnKeyReleased(e->{
+				KeyCode kc = e.getCode();
+				Integer keyNum = null;
+				
+				if(kc == KeyCode.ENTER) {
+					tf  = mc.getTextFieldInput();
+						String txt = tf.getText();
+					if(tf.isFocused()) {
+						ta.requestFocus();
+					}else {
+						tf.requestFocus();
+					}
+					mc.init();
+					HashMap<String, String> r =mc.getRoleNamePathMap();
+					if(r.containsKey(txt)) {
+						mc.getRole1().setText(mc.getRole1().getText().split("\\:")[0]+":"+txt);
+						
+						tf.setText("");
+						
+						mc.getRole1().setOnMouseClicked(ee->{
+							mc.showRoleDetail(mc.getRole1().getText().split("\\:")[1]);
+						});
+					}
+				}
+				
 				
 				if(!e.isControlDown()) {
 					combinationKey1 = null;
 				}
 				
 				if(ta.isFocused()) {
-					KeyCode kc = e.getCode();
-					Integer keyNum = null;
 					try {
 						keyNum = Integer.valueOf(kc.getName());
 					} catch (Exception e2) {
@@ -221,6 +247,10 @@ public class MainApp extends Application {
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(gp);
+			
+			scene.getStylesheets().add  
+			 (MainApp.class.getResource("application.css").toExternalForm());
+			
 			dialogStage.setScene(scene);
 
 			// Set the person into the controller.
