@@ -188,7 +188,7 @@ public class MainApp extends Application {
 					}
 					if(keyNum == null) {
 						if(kc == KeyCode.C) {
-							mc.showRoleDetail(mc.getTextFieldInput().getText());
+							mc.showRoleDetail(mc.getRole1().getText().split("\\:")[1]);
 						}else if("ControlDown".equals(combinationKey1) && kc==KeyCode.S){
 							mc.saveInfo(ta.getText());
 							ta.appendText(mc.getShowInfo());
@@ -249,7 +249,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(gp);
 			
 			scene.getStylesheets().add  
-			 (MainApp.class.getResource("application.css").toExternalForm());
+			 (MainApp.class.getResource("role.css").toExternalForm());
 			
 			dialogStage.setScene(scene);
 

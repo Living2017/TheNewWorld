@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheNewWorld.view.RoleController">
+<GridPane prefHeight="388.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheNewWorld.view.RoleController">
    <columnConstraints>
       <ColumnConstraints maxWidth="150.0" minWidth="10.0" prefWidth="78.0" />
       <ColumnConstraints maxWidth="127.0" minWidth="10.0" prefWidth="42.0" />
       <ColumnConstraints maxWidth="127.0" minWidth="10.0" prefWidth="42.0" />
-      <ColumnConstraints maxWidth="202.0" minWidth="10.0" prefWidth="93.0" />
-      <ColumnConstraints maxWidth="251.0" minWidth="10.0" prefWidth="141.0" />
+      <ColumnConstraints maxWidth="202.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints maxWidth="251.0" minWidth="10.0" prefWidth="84.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="28.0" minHeight="0.0" prefHeight="0.0" />
@@ -31,41 +31,41 @@
    <children>
       <Label text="角色" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Label fx:id="name" prefHeight="15.0" prefWidth="76.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="生命值" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label text="生命值" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
       <Label fx:id="life" GridPane.columnIndex="4" GridPane.rowIndex="2" />
       <Label text="职业" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Label fx:id="vocation" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label text="魔力值" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label text="魔力值" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
       <Label fx:id="mana" GridPane.columnIndex="4" GridPane.rowIndex="3" />
       <Label text="性别" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <Label fx:id="gender" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Label text="攻击力" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label text="攻击力" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
       <Label fx:id="attack" GridPane.columnIndex="4" GridPane.rowIndex="4" />
       <Label text="等级" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Label fx:id="level" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Label text="防御力" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Label text="防御力" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
       <Label fx:id="defense" GridPane.columnIndex="4" GridPane.rowIndex="5" />
       <Label text="体质" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
       <Label fx:id="physique" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <Label text="攻击速度" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+      <Label text="攻击速度" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
       <Label fx:id="attackSpeed" GridPane.columnIndex="4" GridPane.rowIndex="7" />
       <Label text="力量" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
       <Label fx:id="power" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-      <Label text="移动速度" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+      <Label text="移动速度" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
       <Label fx:id="pace" GridPane.columnIndex="4" GridPane.rowIndex="8" />
       <Label text="敏捷" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
       <Label fx:id="nimble" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <Label text="攻击距离" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
+      <Label text="攻击距离" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
       <Label fx:id="attackDistance" GridPane.columnIndex="4" GridPane.rowIndex="9" />
       <Label text="智力" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
       <Label fx:id="intelligence" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-      <Label text="攻击频率" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+      <Label text="攻击频率" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" />
       <Label fx:id="attackRate" GridPane.columnIndex="4" GridPane.rowIndex="10" />
       <Button fx:id="physiqueb" mnemonicParsing="false" prefHeight="10.0" prefWidth="0.0" text="+" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7" />
       <Button fx:id="powerb" mnemonicParsing="false" prefHeight="10.0" prefWidth="0.0" text="+" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="8" />
       <Button fx:id="nimbleb" mnemonicParsing="false" prefHeight="10.0" prefWidth="0.0" text="+" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="9" />
       <Button fx:id="intelligenceb" mnemonicParsing="false" prefHeight="10.0" prefWidth="0.0" text="+" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-      <Label text="可用点数：" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+      <Label maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="64.0" text="可用点数：" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
       <Label GridPane.columnIndex="1" GridPane.rowIndex="6" />
    </children>
 </GridPane>

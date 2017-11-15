@@ -1,50 +1,25 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root {  
-     -fx-background-image: url("../images/BLACK.jpg");  
-     -fx-background-size: 30%;
+     -fx-background-image: url("../images/TGBUS.jpg");
+     -fx-background-size: 120%;
+     -fx-background-repeat: no-repeat    ;
 }  
 
 Label{
 	-fx-font: 15px "fantasy";
-	-fx-text-fill: #7FFF00;
 }
 
-AnchorPane{
-       -fx-background-color: transparent;
-}
-Pane{
-       -fx-background-color: transparent;
-}
-children{
-       -fx-background-color: transparent;
-}
 
-#textAreaShow{
- 	   -fx-font: 20px "fantasy";
- 	   -fx-padding: 10;
-       -fx-background-color: transparent;
-       -fx-text-fill: #7FFF00;
-       -fx-alignment: bottom-center ;
+TextArea {
+ 	   -fx-font: 20px "cursive";
+       -fx-opacity:0.7;
+   
 } 
 
-#textAreaShow:hover {
-       -fx-alignment: bottom-center ;
-} 
-#textAreaShow .content:hover {
-       -fx-alignment: bottom-center ;
-} 
 
-#textAreaShow .content{
-	
-	/*
-	-fx-background-color: transparent;
-	 */
-    -fx-background-image: url("../images/BLACK.jpg");
-	-fx-background-size: 30%;
-	-fx-background-repeat: repeat;
-	-fx-background-position: 0%;
-}
+
+
 /**
  * -fx-font-family (defined in javafx.scene.text.Text)
 
