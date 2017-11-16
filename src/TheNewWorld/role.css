@@ -1,17 +1,14 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root {  
-     -fx-background-image: url("../images/role5.jpg");
-     -fx-background-size: 115%;
-     -fx-background-position: 50%;
-     -fx-background-repeat: stretch;
-    
-     
-     
+     -fx-background-color: rgb(220,0,0)
 } 
 Label{
-	-fx-font-size: 20PX;
-	-fx-text-fill: deeppink;
-	-fx-text-overrun: clip;
+	-fx-font-size: 19PX;
+	-fx-text-fill: rgb(255,255,0) ;
+	-fx-text-overrun: word-ellipsis ;
+}
+#useful{
+	-fx-font-size: 15PX;
 	
 }

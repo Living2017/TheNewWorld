@@ -217,6 +217,7 @@ public class MainApp extends Application {
 			 (MainApp.class.getResource("application.css").toExternalForm());
 			
 			//primaryStage.initStyle(StageStyle.TRANSPARENT);
+			//primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.show();
 			ta = (TextArea) parent.lookup("#textAreaShow");
 			tf = (TextField) parent.lookup("#textFieldInput");

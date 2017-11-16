@@ -48,6 +48,8 @@ public class RoleController {
 	private Label attackSpeed;
 	@FXML
 	private Label pace;
+	@FXML
+	private Label useful;
 	
 	@SuppressWarnings("unused")
 	private Stage dialogStage;
