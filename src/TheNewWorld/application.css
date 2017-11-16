@@ -3,43 +3,32 @@
 .root {  
      -fx-background-image: url("../images/TGBUS.jpg");
      -fx-background-size: 120%;
-     -fx-background-repeat: no-repeat    ;
+     -fx-background-repeat: no-repeat;
+     -fx-accent:rgb(255,255,0);	
+     -fx-focus-color:rgb(255,255,0);	
+     -fx-text-fill: rgb(255,255,0);		
 }  
 
 Label{
 	-fx-font: 15px "fantasy";
+	-fx-text-fill: rgb(255,255,0);	
 }
 
 
 TextArea {
  	   -fx-font: 20px "cursive";
        -fx-opacity:0.7;
-   
+		-fx-text-fill: rgb(255,255,0);	
+       -fx-border-color: rgb(0,0,0) ;
+       -fx-border-width: 0;
+       -fx-accent:rgb(255,255,0);	
+       -fx-focus-color:rgb(255,255,0);	
+       
 } 
 
-
-
-
-/**
- * -fx-font-family (defined in javafx.scene.text.Text)
-
-syntax = <font-family>
-
-
-The string name of the font family. An actual font family name available on the system can be used, or one of the following generic family names can be used: 
-'serif' (e.g., Times) 
-'sans-serif' (e.g., Helvetica) 
-'cursive' (e.g., Zapf-Chancery) 
-'fantasy' (e.g., Western) 
-'monospace' (e.g., Courier) 
- 
- “线”（例如，倍）
-“sans-serif”（例如，黑体）
-“草书”（例如，Zapf办公处）
-“幻想”（例如，西方）
-“等宽字体”（例如，快递）
- * 
- */
+TextArea .content{
+       -fx-background-color: rgb(0,0,0);
+}
 
 
 

@@ -4,13 +4,14 @@
      -fx-background-image: url("../images/role5.jpg");
      -fx-background-size: 115%;
      -fx-background-position: 50%;
-     -fx-background-repeat: stretch ;
+     -fx-background-repeat: stretch;
     
      
      
 } 
 Label{
 	-fx-font-size: 20PX;
-	-fx-text-fill: deeppink  ;
-	-fx-text-overrun: clip   ;
+	-fx-text-fill: deeppink;
+	-fx-text-overrun: clip;
+	
 }
