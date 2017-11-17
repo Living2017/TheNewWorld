@@ -5,6 +5,7 @@ import java.util.HashMap;
 import TheNewWorld.model.Role;
 import TheNewWorld.view.MainController;
 import TheNewWorld.view.RoleController;
+import TheNewWorld.view.RoleCreatorController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
@@ -56,6 +57,13 @@ public class MainApp extends Application {
 			MainController mc = loader.getController();
 			mc.setMa(this);
 			
+			mc.getRole1().setOnMouseClicked(ee->{
+				String role1 =mc.getRole1().getText();
+				if(mc.getRole1().getText().contains(":")) {
+					mc.showRoleDetail(role1.split("\\:")[1]);
+				}
+					
+			});
 			parent = loader.getRoot();
 			
 			parent.setOnMouseMoved(e->{
@@ -169,10 +177,6 @@ public class MainApp extends Application {
 						mc.getRole1().setText(mc.getRole1().getText().split("\\:")[0]+":"+txt);
 						
 						tf.setText("");
-						
-						mc.getRole1().setOnMouseClicked(ee->{
-							mc.showRoleDetail(mc.getRole1().getText().split("\\:")[1]);
-						});
 					}
 				}
 				
@@ -230,6 +234,41 @@ public class MainApp extends Application {
 		launch(args);
 	}
 
+	public String CreateRoleDetail(){
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainApp.class.getResource("view/RoleCreator.fxml"));
+		try {
+			GridPane gp = (GridPane) loader.load();
+			dialogStage = new Stage();
+			dialogStage.setTitle("创建人物");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(gp);
+			
+			scene.getStylesheets().add  
+			 (MainApp.class.getResource("roleCreator.css").toExternalForm());
+			
+			dialogStage.setScene(scene);
+			
+			RoleCreatorController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			dialogStage.setResizable(false);
+			dialogStage.setAlwaysOnTop(false);
+			
+			controller.getGender().getItems().addAll("男","女");
+			controller.getGender().setValue("男");
+			
+			controller.getVocation().getItems().addAll("战士","法师","牧师");
+			controller.getVocation().setValue("战士");
+			
+			dialogStage.showAndWait();
+			return controller.getMessage();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getLocalizedMessage();
+		}
+	}
+	
 	public void ShowRoleDetail(Role role) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MainApp.class.getResource("view/Role.fxml"));

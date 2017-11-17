@@ -18,7 +18,7 @@
             <Label layoutX="372.0" layoutY="48.0" text="Label" />
             <Label layoutX="591.0" layoutY="48.0" text="Label" />
             <Label layoutX="762.0" layoutY="48.0" text="Label" />
-            <Label layoutX="938.0" layoutY="48.0" text="Label" />
+            <Label fx:id="CreateRole" layoutX="938.0" layoutY="48.0" onMouseClicked="#handelCreateRole" text="创建角色" />
          </children>
       </Pane>
    </children>

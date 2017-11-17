@@ -38,6 +38,8 @@ public class MainController {
 	@FXML
 	private Label Role1;
 	@FXML
+	private Label CreateRole;
+	@FXML
 	private TextArea textAreaShow;
 	@FXML
 	private TextField textFieldInput;
@@ -72,6 +74,19 @@ public class MainController {
 			roleNamePathMap.put(file.getName().split("\\.")[0], file.getAbsolutePath());
 		}
 	}
+	
+	@FXML
+	public void handelCreateRole() {
+		String message = ma.CreateRoleDetail();
+		if(message.contains("创建成功")) {
+			init();
+			String name = message.split("\\[")[1].split("\\]")[0];
+			Role1.setText("角色:"+name);
+			textAreaShow.appendText("\n"+message);
+			showRoleDetail(name);
+		}
+	}
+	
 
 	@FXML
 	public void handleButtonConfirm() {

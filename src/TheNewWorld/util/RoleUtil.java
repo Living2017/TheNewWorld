@@ -54,15 +54,18 @@ public class RoleUtil {
 		role.setPhysique(1);
 		role.setPower(1);
 		
-		saveRole(role);
+		if(saveRole(role)) {
+			message = "角色["+name+"]创建成功";
+		}else {
+			message = "角色["+name+"]创建失败";
+		}
 		
 		return message;
 		
 	}
 	
-	private void saveRole(Role role) throws IOException {
+	private boolean saveRole(Role role) throws IOException {
 		String rolePath = file.getAbsolutePath();
-		System.out.println("rolePath="+rolePath);
 		File roleFile = new File(rolePath+"\\"+role.getName()+"."+role.getId()+".role");
 		if(roleFile.createNewFile()) {
 			FileOutputStream fos = new FileOutputStream(roleFile);
@@ -88,8 +91,10 @@ public class RoleUtil {
 			fos.flush();
 			fos.close();
 			System.out.println("角色["+role.getName()+"]创建成功");
+			return true;
 		}else{
 			System.out.println("角色["+role.getName()+"]创建失败");
+			return false;
 		}
 	}
 	

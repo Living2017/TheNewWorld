@@ -1,0 +1,17 @@
+id=bf0e9bd5-da9c-4aa7-aad2-8ec24a8e99d7
+name(姓名)=fs
+gender(性别)=男
+vocation(职业)=战士
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=0
+attack(攻击力)=1
+defense(防御力)=0
+physique(体质)=1
+power(力量)=1
+nimble(敏捷)=1
+intelligence(智力)=1
+attackDistance(攻击距离)=1
+attackRate(攻击频率)=1
+attackSpeed(攻击速度)=1
+pace(移动速度)=1
