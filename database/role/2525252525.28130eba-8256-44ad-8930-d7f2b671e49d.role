@@ -1,0 +1,17 @@
+id(ID)=28130eba-8256-44ad-8930-d7f2b671e49d
+name(姓名)=2525252525
+gender(性别)=女
+vocation(职业)=牧师
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=2
+attack(攻击力)=2
+defense(防御力)=8
+physique(体质)=5
+power(力量)=4
+nimble(敏捷)=10
+intelligence(智力)=10
+attackDistance(攻击距离)=25.0
+attackRate(攻击频率)=0.5
+attackSpeed(攻击速度)=2.0
+pace(移动速度)=4.0

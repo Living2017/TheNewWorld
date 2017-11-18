@@ -14,18 +14,33 @@ import TheNewWorld.model.Role;
 
 public class RoleUtil {
 	
-	private String message ;
-	private HashMap<String,String> ids ;
+	private static String message ;
+	private static HashMap<String,String> ids ;
 	private static JSONObject vocationAttributes;
 	
-	public File file ;
-	
+	public static File file ;
+	public static HashMap<String, String> roleNamePathMap;
+	public static File[] rolesFile;
+/*	
 	public RoleUtil() throws IOException {
 		
 		message = "" ;
 		ids = new HashMap<String,String>();
-		
 		file = new File(MainApp.userDir + "\\database\\role") ;
+	}
+	
+*/	static {
+		message = "" ;
+		ids = new HashMap<String,String>();
+		file = new File(MainApp.userDir + "\\database\\role") ;
+		
+		roleNamePathMap = new HashMap<String, String>();
+
+		rolesFile = file.listFiles();
+		for (File file : rolesFile) {
+			roleNamePathMap.put(file.getName().split("\\.")[0], file.getAbsolutePath());
+		}
+		
 	}
 	
 	//生成角色

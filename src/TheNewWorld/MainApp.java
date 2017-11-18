@@ -3,11 +3,15 @@ package TheNewWorld;
 import java.util.Collection;
 import java.util.HashMap;
 
+import com.sun.crypto.provider.RC2Cipher;
+
 import TheNewWorld.model.Role;
+import TheNewWorld.util.RoleUtil;
 import TheNewWorld.util.WorldUtil;
 import TheNewWorld.view.MainController;
 import TheNewWorld.view.RoleController;
 import TheNewWorld.view.RoleCreatorController;
+import TheNewWorld.view.RoleListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
@@ -175,7 +179,7 @@ public class MainApp extends Application {
 						tf.requestFocus();
 					}
 					mc.init();
-					HashMap<String, String> r =mc.getRoleNamePathMap();
+					HashMap<String, String> r =RoleUtil.roleNamePathMap;
 					if(r.containsKey(txt)) {
 						mc.getRole1().setText(mc.getRole1().getText().split("\\:")[0]+":"+txt);
 						
@@ -235,6 +239,42 @@ public class MainApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public String handleRoleList(){
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainApp.class.getResource("view/RoleList.fxml"));
+		try {
+			GridPane gp = (GridPane) loader.load();
+			dialogStage = new Stage();
+			dialogStage.setTitle("角色列表");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(gp);
+			
+			scene.getStylesheets().add  
+			(MainApp.class.getResource("roleList.css").toExternalForm());
+			
+			dialogStage.setScene(scene);
+			
+			RoleListController rlc = loader.getController();
+			rlc.setDialogStage(dialogStage);
+			
+			parent = loader.getRoot();
+			
+			dialogStage.setOnShown(e->{
+				rlc.init();
+			});
+			
+			dialogStage.setResizable(false);
+			dialogStage.setAlwaysOnTop(false);
+			
+			dialogStage.showAndWait();
+			return rlc.name;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getLocalizedMessage();
+		}
 	}
 
 	public String CreateRoleDetail(){

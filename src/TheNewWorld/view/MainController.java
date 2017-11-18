@@ -40,6 +40,8 @@ public class MainController {
 	@FXML
 	private Label CreateRole;
 	@FXML
+	private Label RoleList;
+	@FXML
 	private TextArea textAreaShow;
 	@FXML
 	private TextField textFieldInput;
@@ -56,23 +58,11 @@ public class MainController {
 	@SuppressWarnings("unused")
 	private static String THUNDER_ATTACK = "thunder";
 
-	private static HashMap<String, String> roleNamePathMap;
 
-	private static RoleUtil roleUtil;
-	private static File[] rolesFile;
 
 	public void init() {
-		roleNamePathMap = new HashMap<String, String>();
-
-		try {
-			roleUtil = new RoleUtil();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		rolesFile = roleUtil.file.listFiles();
-		for (File file : rolesFile) {
-			roleNamePathMap.put(file.getName().split("\\.")[0], file.getAbsolutePath());
-		}
+		@SuppressWarnings("unused")
+		HashMap<String,String> a=RoleUtil.roleNamePathMap;
 	}
 	
 	@FXML
@@ -87,6 +77,12 @@ public class MainController {
 		}else {
 			textAreaShow.appendText("\n"+message);
 		}
+	}
+	@FXML
+	public void handelRoleList() {
+		String name = ma.handleRoleList();
+		Role1.setText("角色:"+name);
+		showRoleDetail(name);
 	}
 	
 
@@ -153,8 +149,8 @@ public class MainController {
 	}
 
 	public void showRoleDetail(String name) {
-		if (roleNamePathMap.containsKey(name)) {
-			String rolePath = roleNamePathMap.get(name);
+		if (RoleUtil.roleNamePathMap.containsKey(name)) {
+			String rolePath = RoleUtil.roleNamePathMap.get(name);
 			File f = new File(rolePath);
 			try {
 				FileInputStream fi = new FileInputStream(f);
@@ -248,11 +244,11 @@ public class MainController {
 	 * @throws IOException
 	 */
 	public void showRoleList() throws IOException {
-		if (rolesFile.length == 0) {
+		if (RoleUtil.rolesFile.length == 0) {
 			showInfo = "\r\n无可用角色，请创建一个角色！";
 		} else {
 			showInfo = "\r\n\r\n角色列表：\r\n";
-			for (File roleFile : rolesFile) {
+			for (File roleFile : RoleUtil.rolesFile) {
 				String roleFileName = roleFile.getName();
 				String roleName = roleFileName.split("\\.")[0];
 				showInfo += roleName + "\t";
@@ -282,14 +278,6 @@ public class MainController {
 
 	public void setShowInfo(String showInfo) {
 		this.showInfo = showInfo;
-	}
-
-	public static HashMap<String, String> getRoleNamePathMap() {
-		return roleNamePathMap;
-	}
-
-	public static void setRoleNamePathMap(HashMap<String, String> roleNamePathMap) {
-		MainController.roleNamePathMap = roleNamePathMap;
 	}
 
 	public Label getRole1() {
