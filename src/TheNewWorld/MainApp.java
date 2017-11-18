@@ -381,7 +381,9 @@ public class MainApp extends Application {
 			dialogStage.setAlwaysOnTop(false);
 			
 			dialogStage.showAndWait();
-			ta.appendText("\n"+controller.message);
+			if(controller.message!=null) {
+				ta.appendText("\n"+controller.message);
+			}
 
 			return controller.message;
 		} catch (Exception e) {

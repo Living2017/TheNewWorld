@@ -46,7 +46,6 @@ public class WorldUtil {
 			String sKey = lsaa[1];
 			saveJosn(worldObject, mKey, sKey, lsaValue);
 		}
-		System.out.println(worldObject.toString());
 	}
 	
 	public static void saveJosn(JSONObject jsonObject,String mKey,String sKey,String lsaValue) {

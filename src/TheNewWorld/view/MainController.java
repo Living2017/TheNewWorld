@@ -23,7 +23,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import sun.nio.cs.ext.ISCII91;
 
 public class MainController {
 
@@ -77,14 +76,16 @@ public class MainController {
 			e.printStackTrace();
 		}
 		String message = ma.CreateRoleDetail();
-		if(message !=null && message.contains("创建成功")) {
-			init();
-			String name = message.split("\\[")[1].split("\\]")[0];
-			Role1.setText("角色:"+name);
-			textAreaShow.appendText("\n"+message);
-			showRoleDetail(name);
-		}else {
-			textAreaShow.appendText("\n"+message);
+		if(message !=null) {
+			if(message.contains("创建成功")) {
+				init();
+				String name = message.split("\\[")[1].split("\\]")[0];
+				Role1.setText("角色:"+name);
+				textAreaShow.appendText("\n"+message);
+				showRoleDetail(name);
+			}else {
+				textAreaShow.appendText("\n"+message);
+			}
 		}
 	}
 	@FXML
@@ -101,7 +102,7 @@ public class MainController {
 		String[] s =Role1.getText().split("\\:");
 		if(s!=null && s.length==2) {
 			String message = ma.handelDeleteRole(s[1]);
-			if(message.contains("成功")) {
+			if(message!=null&&message.contains("成功")) {
 				Role1.setText("角色");
 			}
 		}

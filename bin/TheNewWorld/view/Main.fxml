@@ -14,8 +14,8 @@
             <Button fx:id="buttonConfirm" layoutX="490.0" layoutY="630.0" mnemonicParsing="false" onMouseClicked="#handleButtonConfirm" text="确认" />
             <TextArea fx:id="textAreaShow" editable="false" layoutX="43.0" layoutY="118.0" prefHeight="483.0" prefWidth="910.0" promptText="显示" text="显示信息" />
             <TextField fx:id="textFieldInput" layoutX="54.0" layoutY="630.0" onKeyReleased="#handleKeyboardEvent" prefHeight="23.0" prefWidth="402.0" promptText="输入" />
-            <Label layoutX="183.0" layoutY="48.0" text="Label" />
-            <Label layoutX="372.0" layoutY="48.0" text="Label" />
+            <Label layoutX="183.0" layoutY="48.0" text="背包" />
+            <Label layoutX="372.0" layoutY="48.0" text="地图" />
             <Label fx:id="deleteRole" layoutX="591.0" layoutY="48.0" onMouseClicked="#handelDeleteRole" text="删除角色" />
             <Label fx:id="RoleList" layoutX="762.0" layoutY="48.0" onMouseClicked="#handelRoleList" text="角色列表" />
             <Label fx:id="CreateRole" layoutX="938.0" layoutY="48.0" onMouseClicked="#handelCreateRole" text="创建角色" />
