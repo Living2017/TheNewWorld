@@ -1,14 +1,22 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root {  
-     -fx-background-color: rgb(220,0,0)
+     -fx-background-color: rgb(100,100,100)
 } 
+
+Tooltip{
+	-fx-background-color: rgb(0,0,255);
+}
+
 Label{
+	-fx-pref-width: 70px;
+	-fx-background-color: transparent;
+	-fx-border-color: rgb(200,200,0);
+	-fx-border-radius:  3px;
+	-fx-border-width: 1px;
 	-fx-font-size: 19PX;
 	-fx-text-fill: rgb(255,255,0) ;
+	-fx-text-alignment: center;
 	-fx-text-overrun: word-ellipsis ;
-}
-#useful{
-	-fx-font-size: 15PX;
-	
+	-fx-opacity: 0;
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 import TheNewWorld.util.RoleUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 
 public class RoleListController {
@@ -93,6 +94,10 @@ public class RoleListController {
 		int i=0;
 		for (String string : set) {
 			arrayList.get(i).setText(string);
+			arrayList.get(i).setOpacity(1);
+			Tooltip tooltip =new Tooltip();
+			tooltip.setText(string);
+			arrayList.get(i).setTooltip(tooltip);
 			arrayList.get(i++).setOnMouseClicked(e->{
 				name = string;
 				dialogStage.close();
@@ -187,7 +192,6 @@ public class RoleListController {
     @FXML private Label label77;
     
 	private String message;
-	@SuppressWarnings("unused")
 	private Stage dialogStage;
 
 	public void setDialogStage(Stage dialogStage) {

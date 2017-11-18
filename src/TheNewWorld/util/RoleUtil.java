@@ -30,6 +30,10 @@ public class RoleUtil {
 	}
 	
 */	static {
+		init() ;
+	}
+
+	public static void init() {
 		message = "" ;
 		ids = new HashMap<String,String>();
 		file = new File(MainApp.userDir + "\\database\\role") ;
@@ -40,9 +44,14 @@ public class RoleUtil {
 		for (File file : rolesFile) {
 			roleNamePathMap.put(file.getName().split("\\.")[0], file.getAbsolutePath());
 		}
-		
 	}
 	
+	public static boolean delteRole(String name) {
+		String path = roleNamePathMap.get(name);
+		File f = new File(path);
+		return f.delete();
+	}
+
 	//生成角色
 	public String generateRole(String name,String vocation,String gender) throws IOException {
 		

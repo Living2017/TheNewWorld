@@ -1,0 +1,17 @@
+id(ID)=9fc7af70-9fc4-462a-aa4f-00335cfe9f7e
+name(姓名)=法神
+gender(性别)=女
+vocation(职业)=法师
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=4
+attack(攻击力)=6
+defense(防御力)=6
+physique(体质)=5
+power(力量)=2
+nimble(敏捷)=9
+intelligence(智力)=2
+attackDistance(攻击距离)=25.0
+attackRate(攻击频率)=0.5
+attackSpeed(攻击速度)=2.0
+pace(移动速度)=4.0

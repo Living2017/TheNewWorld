@@ -15,6 +15,7 @@ import TheNewWorld.util.DateUtil;
 import TheNewWorld.util.RoleUtil;
 import TheNewWorld.util.SoundUtil;
 import TheNewWorld.util.VoiceUtil;
+import TheNewWorld.util.WorldUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import sun.nio.cs.ext.ISCII91;
 
 public class MainController {
 
@@ -41,6 +43,8 @@ public class MainController {
 	private Label CreateRole;
 	@FXML
 	private Label RoleList;
+	@FXML
+	private Label deleteRole;
 	@FXML
 	private TextArea textAreaShow;
 	@FXML
@@ -67,6 +71,11 @@ public class MainController {
 	
 	@FXML
 	public void handelCreateRole() {
+		try {
+			WorldUtil.initWorld();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		String message = ma.CreateRoleDetail();
 		if(message !=null && message.contains("创建成功")) {
 			init();
@@ -80,9 +89,22 @@ public class MainController {
 	}
 	@FXML
 	public void handelRoleList() {
+		RoleUtil.init();
 		String name = ma.handleRoleList();
-		Role1.setText("角色:"+name);
-		showRoleDetail(name);
+		if(name!=null&&!"null".equals(name)) {
+			Role1.setText("角色:"+name);
+			showRoleDetail(name);
+		}
+	}
+	@FXML
+	public void handelDeleteRole() {
+		String[] s =Role1.getText().split("\\:");
+		if(s!=null && s.length==2) {
+			String message = ma.handelDeleteRole(s[1]);
+			if(message.contains("成功")) {
+				Role1.setText("角色");
+			}
+		}
 	}
 	
 
@@ -152,9 +174,11 @@ public class MainController {
 		if (RoleUtil.roleNamePathMap.containsKey(name)) {
 			String rolePath = RoleUtil.roleNamePathMap.get(name);
 			File f = new File(rolePath);
+			FileInputStream fi = null;
+			InputStreamReader is = null;
 			try {
-				FileInputStream fi = new FileInputStream(f);
-				InputStreamReader is = new InputStreamReader(fi);
+				fi = new FileInputStream(f);
+				is = new InputStreamReader(fi);
 				String roleInfoTemp = null;
 	/*				
 
@@ -202,6 +226,14 @@ public class MainController {
 
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				try {
+					is.close();
+					fi.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		}
 

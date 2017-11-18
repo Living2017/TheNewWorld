@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheNewWorld.view.RoleDeleteController">
+  <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="60.0" />
+      <RowConstraints minHeight="10.0" prefHeight="60.0" />
+      <RowConstraints minHeight="10.0" prefHeight="60.0" />
+      <RowConstraints minHeight="10.0" prefHeight="60.0" />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Label fx:id="roleDelete" alignment="CENTER" prefHeight="64.0" prefWidth="249.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Button fx:id="confirmDelete" mnemonicParsing="false" onAction="#confirmDelete" onMouseClicked="#confirmDelete" text="确认" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <Label alignment="CENTER" lineSpacing="2.0" prefHeight="66.0" prefWidth="184.0" text="确认要删除角色吗" textAlignment="CENTER" textFill="#ad0c27" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>

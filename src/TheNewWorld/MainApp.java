@@ -11,6 +11,7 @@ import TheNewWorld.util.WorldUtil;
 import TheNewWorld.view.MainController;
 import TheNewWorld.view.RoleController;
 import TheNewWorld.view.RoleCreatorController;
+import TheNewWorld.view.RoleDeleteController;
 import TheNewWorld.view.RoleListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -198,7 +199,7 @@ public class MainApp extends Application {
 					} catch (Exception e2) {
 					}
 					if(keyNum == null) {
-						if(kc == KeyCode.C) {
+						if(kc == KeyCode.C && mc.getRole1().getText().contains(":")) {
 							mc.showRoleDetail(mc.getRole1().getText().split("\\:")[1]);
 						}else if("ControlDown".equals(combinationKey1) && kc==KeyCode.S){
 							mc.saveInfo(ta.getText());
@@ -356,5 +357,40 @@ public class MainApp extends Application {
 		}
 
 	}
+	public String handelDeleteRole(String name) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainApp.class.getResource("view/RoleDelete.fxml"));
+		try {
+			
+			GridPane gp = (GridPane) loader.load();
+			
+			dialogStage = new Stage();
+			dialogStage.setTitle("删除角色");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(gp);
+			
+			scene.getStylesheets().add  
+			(MainApp.class.getResource("roleDelete.css").toExternalForm());
+			
+			dialogStage.setScene(scene);
+			
+			RoleDeleteController controller = loader.getController();
+			controller.getRoleDelete().setText(name);
+			controller.setDialogStage(dialogStage);
+			dialogStage.setResizable(false);
+			dialogStage.setAlwaysOnTop(false);
+			
+			dialogStage.showAndWait();
+			ta.appendText("\n"+controller.message);
+
+			return controller.message;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
 
 }
