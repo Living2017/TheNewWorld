@@ -331,7 +331,6 @@ public class MainApp extends Application {
 				}
 			});
 			
-			// Create the dialog Stage.
 			dialogStage = new Stage();
 			dialogStage.setTitle("人物属性");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
