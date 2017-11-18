@@ -28,13 +28,13 @@ public class Role {
 	//智力
 	private Integer intelligence ; 
 	//攻击距离
-	private Integer attackDistance ; 
+	private Double attackDistance ; 
 	//攻击频率
-	private Integer attackRate  ; 
+	private Double attackRate  ; 
 	//攻击速度
-	private Integer attackSpeed  ; 
+	private Double attackSpeed  ; 
 	//移动速度
-	private Integer pace ;
+	private Double pace ;
 	
 	//getter and setter
 	public String getId() {
@@ -115,28 +115,28 @@ public class Role {
 	public void setIntelligence(Integer intelligence) {
 		this.intelligence = intelligence;
 	}
-	public Integer getAttackDistance() {
+	public Double getAttackDistance() {
 		return attackDistance;
 	}
-	public void setAttackDistance(Integer attackDistance) {
+	public void setAttackDistance(Double attackDistance) {
 		this.attackDistance = attackDistance;
 	}
-	public Integer getAttackRate() {
+	public Double getAttackRate() {
 		return attackRate;
 	}
-	public void setAttackRate(Integer attackRate) {
+	public void setAttackRate(Double attackRate) {
 		this.attackRate = attackRate;
 	}
-	public Integer getAttackSpeed() {
+	public Double getAttackSpeed() {
 		return attackSpeed;
 	}
-	public void setAttackSpeed(Integer attackSpeed) {
+	public void setAttackSpeed(Double attackSpeed) {
 		this.attackSpeed = attackSpeed;
 	}
-	public Integer getPace() {
+	public Double getPace() {
 		return pace;
 	}
-	public void setPace(Integer pace) {
+	public void setPace(Double pace) {
 		this.pace = pace;
 	} 
 	

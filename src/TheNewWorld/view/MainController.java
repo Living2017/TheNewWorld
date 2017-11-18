@@ -78,12 +78,14 @@ public class MainController {
 	@FXML
 	public void handelCreateRole() {
 		String message = ma.CreateRoleDetail();
-		if(message.contains("创建成功")) {
+		if(message !=null && message.contains("创建成功")) {
 			init();
 			String name = message.split("\\[")[1].split("\\]")[0];
 			Role1.setText("角色:"+name);
 			textAreaShow.appendText("\n"+message);
 			showRoleDetail(name);
+		}else {
+			textAreaShow.appendText("\n"+message);
 		}
 	}
 	
@@ -185,6 +187,14 @@ public class MainController {
 						 ) {
 						method = Role.class.getMethod(MethodName, new Class[] {String.class});
 						arguments = new Object[]{value};
+					}else if(
+							"attackRate".equals(key)||
+							"attackSpeed".equals(key)||
+							"attackDistance".equals(key)||
+							"pace".equals(key)
+							){
+						method = Role.class.getMethod(MethodName, new Class[] {Double.class});
+						arguments = new Object[]{Double.valueOf(value)};
 					}else {
 						method = Role.class.getMethod(MethodName, new Class[] {Integer.class});
 						arguments = new Object[]{Integer.valueOf(value)};

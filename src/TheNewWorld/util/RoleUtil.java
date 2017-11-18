@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import TheNewWorld.MainApp;
 import TheNewWorld.model.Role;
 
@@ -13,6 +16,7 @@ public class RoleUtil {
 	
 	private String message ;
 	private HashMap<String,String> ids ;
+	private static JSONObject vocationAttributes;
 	
 	public File file ;
 	
@@ -38,21 +42,26 @@ public class RoleUtil {
 		role.setVocation(vocation);
 		role.setGender(gender);
 		
+		
+		
 		String id = generateID();
 		role.setId(id);
-		role.setAttack(1);
-		role.setAttackDistance(1);
-		role.setAttackRate(1);
-		role.setAttackSpeed(1);
-		role.setDefense(0);
-		role.setIntelligence(1);
+		role.setAttack(1         + AlgorithmUtil.randomInt());
+		role.setDefense(0        + AlgorithmUtil.randomInt());
+		role.setIntelligence(1   + AlgorithmUtil.randomInt());
 		role.setLevel(0);
 		role.setLife(10);
-		role.setMana(0);
-		role.setNimble(1);
-		role.setPace(1);
-		role.setPhysique(1);
-		role.setPower(1);
+		role.setMana(0           + AlgorithmUtil.randomInt());
+		role.setNimble(1         + AlgorithmUtil.randomInt());
+		role.setPhysique(1       + AlgorithmUtil.randomInt());
+		role.setPower(1 	     + AlgorithmUtil.randomInt());
+		
+		getVocationAttributes(WorldUtil.cnameMap.get(vocation));
+		
+		role.setAttackDistance(Double.valueOf(vocationAttributes.getString("attackDistance"))); 
+		role.setAttackSpeed(Double.valueOf(vocationAttributes.getString("attackSpeed")));
+		role.setPace(Double.valueOf(vocationAttributes.getString("pace")));
+		role.setAttackRate(AlgorithmUtil.calcAttackRate(role.getAttackSpeed()));
 		
 		if(saveRole(role)) {
 			message = "角色["+name+"]创建成功";
@@ -64,13 +73,25 @@ public class RoleUtil {
 		
 	}
 	
+	public static void getVocationAttributes(String vocation) {
+		JSONArray jsonArray=WorldUtil.worldObject.getJSONArray("world").getJSONObject(0).getJSONArray("vocation");
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jsonObject = jsonArray.getJSONObject(i);
+			if(jsonObject.has(vocation)) {
+				vocationAttributes= jsonObject.getJSONObject(vocation);
+				break;
+			}
+		}
+		
+	}
+	
 	private boolean saveRole(Role role) throws IOException {
 		String rolePath = file.getAbsolutePath();
 		File roleFile = new File(rolePath+"\\"+role.getName()+"."+role.getId()+".role");
 		if(roleFile.createNewFile()) {
 			FileOutputStream fos = new FileOutputStream(roleFile);
 			String roleInfo = 
-					"id="+role.getId()+"\r\n"+
+					"id(ID)="+role.getId()+"\r\n"+
 					"name(姓名)="+role.getName()  +"\r\n" +
 					"gender(性别)="+role.getGender()  +"\r\n" +
 					"vocation(职业)="+role.getVocation()  +"\r\n" +

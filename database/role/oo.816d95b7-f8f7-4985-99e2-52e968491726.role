@@ -1,0 +1,17 @@
+id(ID)=816d95b7-f8f7-4985-99e2-52e968491726
+name(姓名)=oo
+gender(性别)=男
+vocation(职业)=法师
+level(等级)=2
+life(生命值)=17
+mana(魔力值)=0
+attack(攻击力)=5
+defense(防御力)=5
+physique(体质)=2
+power(力量)=10
+nimble(敏捷)=1
+intelligence(智力)=9
+attackDistance(攻击距离)=8
+attackRate(攻击频率)=6
+attackSpeed(攻击速度)=9
+pace(移动速度)=6

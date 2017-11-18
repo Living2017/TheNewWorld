@@ -1,8 +1,10 @@
 package TheNewWorld;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import TheNewWorld.model.Role;
+import TheNewWorld.util.WorldUtil;
 import TheNewWorld.view.MainController;
 import TheNewWorld.view.RoleController;
 import TheNewWorld.view.RoleCreatorController;
@@ -38,9 +40,10 @@ public class MainApp extends Application {
 	private static TextArea ta ;
 	private static TextField tf;
 	
-	public MainApp() {
+	static{
 		userDir = System.getProperty("user.dir");
 	}
+	
 
 	@SuppressWarnings("static-access")
 @Override
@@ -258,8 +261,14 @@ public class MainApp extends Application {
 			controller.getGender().getItems().addAll("男","女");
 			controller.getGender().setValue("男");
 			
-			controller.getVocation().getItems().addAll("战士","法师","牧师");
-			controller.getVocation().setValue("战士");
+			Collection<String> strings = WorldUtil.nameMap.values();
+			Object[] objects=strings.toArray();
+			String[] vocation = new String[objects.length] ;
+			for (int i = 0; i < objects.length; i++) {
+				vocation[i] = (String) objects[i];
+			}
+			controller.getVocation().getItems().addAll(vocation);
+			controller.getVocation().setValue(vocation[0]);
 			
 			dialogStage.showAndWait();
 			return controller.getMessage();
