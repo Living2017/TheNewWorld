@@ -1,14 +1,17 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root {  
-     -fx-background-color: rgb(220,0,0)
+     -fx-background-color: rgb(220,0,0);
+     -fx-vertical-grid-lines-visible: true ;
 } 
 Label{
 	-fx-font-size: 19PX;
 	-fx-text-fill: rgb(255,255,0) ;
+	-fx-text-alignment: right ;
 	-fx-text-overrun: word-ellipsis ;
+	-fx-max-width: 80px;
 }
+
 #useful{
 	-fx-font-size: 15PX;
-	
 }

@@ -105,7 +105,8 @@ public class RoleListController {
 				dialogStage.close();
 			});
 
-			String style = "-fx-opacity: 1;-fx-border-color:"+w.get(c.get(n.get(string)))+";";
+			String style = "-fx-opacity: 0.5;-fx-border-color:"+w.get(c.get(n.get(string)))
+			+";-fx-background-image: url(\"../images/剑.png\");";
 			label.setStyle(style);
 			
 			i++;
