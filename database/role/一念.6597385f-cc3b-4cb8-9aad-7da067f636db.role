@@ -1,0 +1,17 @@
+id(ID)=6597385f-cc3b-4cb8-9aad-7da067f636db
+name(姓名)=一念
+gender(性别)=男
+vocation(职业)=牧师
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=7
+attack(攻击力)=9
+defense(防御力)=3
+physique(体质)=3
+power(力量)=9
+nimble(敏捷)=10
+intelligence(智力)=5
+attackDistance(攻击距离)=25.0
+attackRate(攻击频率)=0.5
+attackSpeed(攻击速度)=2.0
+pace(移动速度)=4.0

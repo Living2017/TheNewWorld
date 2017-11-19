@@ -7,7 +7,7 @@
 Label{
 	-fx-font-size: 19PX;
 	-fx-text-fill: rgb(255,255,0) ;
-	-fx-text-alignment: right ;
+	-fx-text-alignment: center  ;
 	-fx-text-overrun: word-ellipsis ;
 	-fx-max-width: 80px;
 }

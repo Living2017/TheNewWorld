@@ -24,6 +24,7 @@ public class RoleUtil {
 	public static File file ;
 	public static HashMap<String, String> roleNamePathMap;
 	public static HashMap<String, String> nameVocationMap;
+	public static HashMap<String, String> nameGenderMap;
 	public static File[] rolesFile;
 
 	static {
@@ -37,6 +38,7 @@ public class RoleUtil {
 		
 		roleNamePathMap = new HashMap<String, String>();
 		nameVocationMap = new HashMap<String, String>();
+		nameGenderMap = new HashMap<String, String>();
 
 		rolesFile = file.listFiles();
 		for (File file : rolesFile) {
@@ -54,6 +56,9 @@ public class RoleUtil {
 					if(string.contains("vocation")) {
 						String vocation=string.split("\\=")[1];
 						nameVocationMap.put(name, vocation);
+					}else if(string.contains("gender")) {
+						String gender=string.split("\\=")[1];
+						nameGenderMap.put(name, gender);
 					}
 				}
 				

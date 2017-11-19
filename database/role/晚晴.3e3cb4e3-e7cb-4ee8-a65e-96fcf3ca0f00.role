@@ -1,0 +1,17 @@
+id(ID)=3e3cb4e3-e7cb-4ee8-a65e-96fcf3ca0f00
+name(姓名)=晚晴
+gender(性别)=女
+vocation(职业)=弓箭手
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=0
+attack(攻击力)=9
+defense(防御力)=8
+physique(体质)=7
+power(力量)=8
+nimble(敏捷)=2
+intelligence(智力)=5
+attackDistance(攻击距离)=30.0
+attackRate(攻击频率)=1.0
+attackSpeed(攻击速度)=1.0
+pace(移动速度)=5.0

@@ -228,8 +228,12 @@ public class MainController {
 				e.printStackTrace();
 			}finally {
 				try {
-					is.close();
-					fi.close();
+					if(is!=null) {
+						is.close();
+					}
+					if(fi!=null) {
+						fi.close();
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-
+import TheNewWorld.MainApp;
 import TheNewWorld.util.RoleUtil;
 import TheNewWorld.util.WorldUtil;
 import javafx.fxml.FXML;
@@ -92,6 +92,7 @@ public class RoleListController {
 		
 		HashMap<String, String> m=RoleUtil.roleNamePathMap;
 		HashMap<String, String> n=RoleUtil.nameVocationMap;
+		HashMap<String, String> g=RoleUtil.nameGenderMap;
 		HashMap<String, String> w=WorldUtil.vocationColorMap;
 		HashMap<String, String> c=WorldUtil.cnameMap;
 		Set<String> set = m.keySet();
@@ -104,9 +105,14 @@ public class RoleListController {
 				name = string;
 				dialogStage.close();
 			});
-
-			String style = "-fx-opacity: 0.5;-fx-border-color:"+w.get(c.get(n.get(string)))
-			+";-fx-background-image: url(\"../images/剑.png\");";
+			String png = g.get(string)+n.get(string);
+			String imagePath = "file:"+MainApp.userDir.replace("\\", "/")+"/src/images/"+png+".png";
+			String style = "-fx-opacity: 0.9;"
+					+ "-fx-border-color:"+w.get(c.get(n.get(string)))
+			+";-fx-background-image: url(\""+imagePath+"\");"
+			+ "-fx-background-size: 35%;"
+			+ "-fx-background-repeat:no-repeat;"
+			+ "-fx-background-position:right;";
 			label.setStyle(style);
 			
 			i++;
