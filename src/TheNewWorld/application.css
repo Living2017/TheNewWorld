@@ -2,7 +2,7 @@
 
 .root {  
      -fx-background-image: url("../images/TGBUS.jpg");
-     -fx-background-size: 120%;
+     -fx-background-size: 120%,20%;
      -fx-background-repeat: no-repeat;
      -fx-accent:rgb(255,255,0);	
      -fx-focus-color:rgb(255,255,0);	

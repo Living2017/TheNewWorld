@@ -1,11 +1,17 @@
 package TheNewWorld;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.function.Consumer;
 
 import com.sun.crypto.provider.RC2Cipher;
 
 import TheNewWorld.model.Role;
+import TheNewWorld.util.ImageUtil;
 import TheNewWorld.util.RoleUtil;
 import TheNewWorld.util.WorldUtil;
 import TheNewWorld.view.MainController;
@@ -14,10 +20,12 @@ import TheNewWorld.view.RoleCreatorController;
 import TheNewWorld.view.RoleDeleteController;
 import TheNewWorld.view.RoleListController;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -31,8 +39,9 @@ import javafx.scene.layout.GridPane;
 public class MainApp extends Application {
 
 	public static String userDir;
+	public static String imagePath;
 	public FXMLLoader loader;
-	public Parent parent;
+	
 	private Stage primaryStage;
 	private Stage dialogStage;
 	private static final int FIXED_HEIGHT = 483;
@@ -47,6 +56,7 @@ public class MainApp extends Application {
 	
 	static{
 		userDir = System.getProperty("user.dir");
+		imagePath = userDir+"\\src\\images";
 	}
 	
 
@@ -72,7 +82,7 @@ public class MainApp extends Application {
 				}
 					
 			});
-			parent = loader.getRoot();
+			Parent parent = loader.getRoot();
 			
 			parent.setOnMouseMoved(e->{
 				
@@ -159,7 +169,7 @@ public class MainApp extends Application {
 				ta.appendText("e.getScreenY()="+e.getScreenY());
 			});
 			
-			
+			//TODO parent.setOnKeyPressed
 			parent.setOnKeyPressed(e->{
 				if(e.isControlDown()) {
 					combinationKey1 = "ControlDown";
@@ -167,6 +177,7 @@ public class MainApp extends Application {
 				
 			});
 			
+			//TODO parent.setOnKeyReleased
 			parent.setOnKeyReleased(e->{
 				KeyCode kc = e.getCode();
 				Integer keyNum = null;
@@ -191,6 +202,59 @@ public class MainApp extends Application {
 				
 				if(!e.isControlDown()) {
 					combinationKey1 = null;
+				}
+				
+				if("ControlDown".equals(combinationKey1) && kc == KeyCode.H) {
+					ObservableList<Node> o =parent.getChildrenUnmodifiable();
+					Iterator<Node> t =o.iterator();
+					while(t.hasNext()) {
+						Node node=t.next();
+						if(node.getOpacity()==0) {
+							node.setOpacity(1);
+						}else {
+							node.setOpacity(0);
+						}
+					}
+				}
+				if("ControlDown".equals(combinationKey1) && kc == KeyCode.F) {
+					if(primaryStage.isFullScreen()) {
+						primaryStage.setFullScreen(false);;
+					}else {
+						primaryStage.setFullScreen(true);;
+					}
+				}
+				if("ControlDown".equals(combinationKey1) && kc == KeyCode.R) {
+					String string =parent.getStyle();
+					
+					
+					File f = new File(imagePath+"\\background\\main");
+					File[] files =f.listFiles();
+					String name = "";
+					String size="100%";
+					if(string.contains("TGBUS.jpg")) {
+						Random random = new Random();
+						int index = random.nextInt(files.length-1) ;
+						File file = files[index];
+						String path1 = file.getAbsolutePath();
+						ImageUtil imageUtil=null;
+						try {
+							imageUtil = new ImageUtil(file);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+						size = ((imageUtil.getWidth()/imageUtil.getHeight()/(1280/800))*100)+"%" ;
+						if(imageUtil.getWidth() == 1280 && imageUtil.getHeight()==800) {
+							name = path1.replace("\\", "/");
+						}else {
+							name = "";
+						}
+						
+					}else {
+						name=(imagePath+"\\TGBUS.jpg").replace("\\", "/");
+						size="120%";
+					}
+					parent.setStyle("-fx-background-image: url(\"file:"+name+"\");"
+							+ "-fx-background-size: "+size+";");
 				}
 				
 				if(ta.isFocused()) {
@@ -230,6 +294,7 @@ public class MainApp extends Application {
 			
 			//primaryStage.initStyle(StageStyle.TRANSPARENT);
 			//primaryStage.initStyle(StageStyle.UNDECORATED);
+			//primaryStage.initStyle(StageStyle.UTILITY);
 			primaryStage.show();
 			ta = (TextArea) parent.lookup("#textAreaShow");
 			tf = (TextField) parent.lookup("#textFieldInput");
@@ -260,8 +325,7 @@ public class MainApp extends Application {
 			
 			RoleListController rlc = loader.getController();
 			rlc.setDialogStage(dialogStage);
-			
-			parent = loader.getRoot();
+			Parent parent = loader.getRoot();
 			
 			dialogStage.setOnShown(e->{
 				rlc.init();
