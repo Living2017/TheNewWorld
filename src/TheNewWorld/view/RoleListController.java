@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+
 import TheNewWorld.util.RoleUtil;
+import TheNewWorld.util.WorldUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 
 public class RoleListController {
@@ -90,18 +91,24 @@ public class RoleListController {
 
 		
 		HashMap<String, String> m=RoleUtil.roleNamePathMap;
+		HashMap<String, String> n=RoleUtil.nameVocationMap;
+		HashMap<String, String> w=WorldUtil.vocationColorMap;
+		HashMap<String, String> c=WorldUtil.cnameMap;
 		Set<String> set = m.keySet();
 		int i=0;
 		for (String string : set) {
-			arrayList.get(i).setText(string);
-			arrayList.get(i).setOpacity(1);
-			Tooltip tooltip =new Tooltip();
-			tooltip.setText(string);
-			arrayList.get(i).setTooltip(tooltip);
-			arrayList.get(i++).setOnMouseClicked(e->{
+			Label label=arrayList.get(i);
+			label.setText(string);
+			label.setOpacity(1);
+			label.setOnMouseClicked(e->{
 				name = string;
 				dialogStage.close();
 			});
+
+			String style = "-fx-opacity: 1;-fx-border-color:"+w.get(c.get(n.get(string)))+";";
+			label.setStyle(style);
+			
+			i++;
 		}
 		
 	}

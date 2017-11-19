@@ -1,0 +1,17 @@
+id(ID)=d5e7b35a-9d00-417d-aad8-11a4b382f060
+name(姓名)=女法师
+gender(性别)=女
+vocation(职业)=法师
+level(等级)=0
+life(生命值)=10
+mana(魔力值)=3
+attack(攻击力)=2
+defense(防御力)=3
+physique(体质)=1
+power(力量)=3
+nimble(敏捷)=10
+intelligence(智力)=2
+attackDistance(攻击距离)=25.0
+attackRate(攻击频率)=0.5
+attackSpeed(攻击速度)=2.0
+pace(移动速度)=4.0

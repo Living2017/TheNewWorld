@@ -1,8 +1,11 @@
 package TheNewWorld.util;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -20,16 +23,10 @@ public class RoleUtil {
 	
 	public static File file ;
 	public static HashMap<String, String> roleNamePathMap;
+	public static HashMap<String, String> nameVocationMap;
 	public static File[] rolesFile;
-/*	
-	public RoleUtil() throws IOException {
-		
-		message = "" ;
-		ids = new HashMap<String,String>();
-		file = new File(MainApp.userDir + "\\database\\role") ;
-	}
-	
-*/	static {
+
+	static {
 		init() ;
 	}
 
@@ -39,14 +36,43 @@ public class RoleUtil {
 		file = new File(MainApp.userDir + "\\database\\role") ;
 		
 		roleNamePathMap = new HashMap<String, String>();
+		nameVocationMap = new HashMap<String, String>();
 
 		rolesFile = file.listFiles();
 		for (File file : rolesFile) {
-			roleNamePathMap.put(file.getName().split("\\.")[0], file.getAbsolutePath());
+			String name = file.getName().split("\\.")[0];
+			roleNamePathMap.put(name, file.getAbsolutePath());
+			FileInputStream fileInputStream =null;
+			InputStreamReader inputStreamReader= null;
+			BufferedReader bReader = null;
+			try {
+				fileInputStream = new FileInputStream(file);
+				inputStreamReader = new InputStreamReader(fileInputStream);
+				bReader=new BufferedReader(inputStreamReader);
+				String string=null;
+				while((string=bReader.readLine()) != null) {
+					if(string.contains("vocation")) {
+						String vocation=string.split("\\=")[1];
+						nameVocationMap.put(name, vocation);
+					}
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					bReader.close();
+					inputStreamReader.close();
+					fileInputStream.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
 	public static boolean delteRole(String name) {
+		init();
 		String path = roleNamePathMap.get(name);
 		File f = new File(path);
 		return f.delete();

@@ -189,7 +189,6 @@ public class MainController {
 					roleInfo += (char) i;
 				}
 	*/			
-				@SuppressWarnings("resource")
 				BufferedReader br = new BufferedReader(is);
 				Role role = Role.class.newInstance();
 				while((roleInfoTemp=br.readLine())!=null){

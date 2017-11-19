@@ -15,6 +15,8 @@ public class WorldUtil {
 	static {try {
 		nameMap = new HashMap<String,String>();
 		cnameMap = new HashMap<String,String>();
+		vocationColorMap = new HashMap<String,String>();
+		vocationIcoMap = new HashMap<String,String>();
 		world = new HashMap<String,String>();
 		worldObject = new JSONObject();
 		initWorld();
@@ -24,6 +26,8 @@ public class WorldUtil {
 	public static HashMap<String,String> world;
 	public static HashMap<String,String> nameMap;
 	public static HashMap<String,String> cnameMap;
+	public static HashMap<String,String> vocationColorMap;
+	public static HashMap<String,String> vocationIcoMap;
 	public static JSONObject worldObject;
 	
 	public static void initWorld() throws Exception {
@@ -45,6 +49,11 @@ public class WorldUtil {
 			String mKey = lsaa[0];
 			String sKey = lsaa[1];
 			saveJosn(worldObject, mKey, sKey, lsaValue);
+			if("color".equals(sKey)) {
+				vocationColorMap.put(mKey, lsaValue);
+			}else if("ico".equals(sKey)) {
+				vocationIcoMap.put(mKey, lsaValue);
+			}
 		}
 	}
 	
@@ -70,9 +79,9 @@ public class WorldUtil {
 
 			Double i  = null;
 			try {
-				i  =Double.valueOf(lsaValue);
+	 			i  =Double.valueOf(lsaValue);
 			} catch (Exception e) {	}
-			if(i!=null) {
+			if(i!=null || (!RegularUtil.isChinesePattern(lsaValue))) {
 				Object object=jsonObject.get(key);
 				if(object instanceof JSONObject) {
 					((JSONObject)object).put(value, lsaValue);
