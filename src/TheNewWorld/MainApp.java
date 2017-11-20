@@ -231,7 +231,7 @@ public class MainApp extends Application {
 					File[] files =f.listFiles();
 					String name = "";
 					String size="100%";
-					if(string.contains("TGBUS.jpg")) {
+					if(string.contains("经典游戏盔甲造型桌面壁纸6.jpg")) {
 						Random random = new Random();
 						int index = random.nextInt(files.length-1) ;
 						File file = files[index];
@@ -250,7 +250,7 @@ public class MainApp extends Application {
 						}
 						
 					}else {
-						name=(imagePath+"\\TGBUS.jpg").replace("\\", "/");
+						name=(imagePath+"\\background\\main\\经典游戏盔甲造型桌面壁纸6.jpg").replace("\\", "/");
 						size="120%";
 					}
 					parent.setStyle("-fx-background-image: url(\"file:"+name+"\");"

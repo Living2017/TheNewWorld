@@ -23,6 +23,7 @@ TextArea {
        -fx-border-width: 0;
        -fx-accent:rgb(255,255,0);	
        -fx-focus-color:rgb(255,255,0);	
+       -fx-background-color: transparent ;
        
 } 
 
@@ -34,6 +35,8 @@ TextField{
 		-fx-border-width: 0;
 	    -fx-accent:rgb(255,255,0);	
        	-fx-focus-color:rgb(255,255,0);	
+
+
 }
 
 

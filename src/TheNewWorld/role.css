@@ -12,6 +12,10 @@ Label{
 	-fx-max-width: 80px;
 }
 
+Button{
+	-fx-border-width: 0;
+}
+
 #useful{
 	-fx-font-size: 15PX;
 }
