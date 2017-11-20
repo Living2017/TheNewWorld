@@ -19,6 +19,7 @@ import TheNewWorld.util.WorldUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -66,6 +67,12 @@ public class MainController {
 	public void init() {
 		@SuppressWarnings("unused")
 		HashMap<String,String> a=RoleUtil.roleNamePathMap;
+	}
+	
+	@FXML
+	public void handelFighting() {
+		String message = ma.handelFighting();
+		textAreaShow.appendText("\n"+message);
 	}
 	
 	@FXML

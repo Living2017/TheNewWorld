@@ -14,6 +14,7 @@ import TheNewWorld.model.Role;
 import TheNewWorld.util.ImageUtil;
 import TheNewWorld.util.RoleUtil;
 import TheNewWorld.util.WorldUtil;
+import TheNewWorld.view.FightingController;
 import TheNewWorld.view.MainController;
 import TheNewWorld.view.RoleController;
 import TheNewWorld.view.RoleCreatorController;
@@ -28,6 +29,7 @@ import javafx.stage.StageStyle;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -457,5 +459,50 @@ public class MainApp extends Application {
 		
 	}
 
+	public String handelFighting() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainApp.class.getResource("view/Fighting.fxml"));
+		try {
+			
+			GridPane gp = (GridPane) loader.load();
+			
+			Button F1= (Button) gp.lookup("#F1");
+			Button F2= (Button) gp.lookup("#F2");
+			
+			gp.setOnMouseClicked(e->{
+				F1.setStyle("-fx-background-color:red;");
+				F2.setStyle("-fx-background-color:green;");
+			});
+			
+			
+			dialogStage = new Stage();
+			dialogStage.setTitle("战斗吧勇士，为了荣耀，为了自由！");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(gp);
+			
+			scene.getStylesheets().add  
+			(MainApp.class.getResource("fighting.css").toExternalForm());
+			
+			dialogStage.setScene(scene);
+			
+			FightingController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			dialogStage.setResizable(false);
+			dialogStage.setAlwaysOnTop(false);
+			
+			dialogStage.showAndWait();
+			if(controller.message!=null) {
+				ta.appendText("\n"+controller.message);
+			}
+			
+			return controller.message;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 
 }

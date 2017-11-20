@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane fx:id="gp" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TheNewWorld.view.FightingController">
+   <rowConstraints>
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+      <RowConstraints minHeight="20.0" prefHeight="20.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+      <ColumnConstraints minWidth="20.0" prefWidth="20.0" />
+   </columnConstraints>
+   <children>
+      <Button fx:id="F1" mnemonicParsing="false" onAction="#fighting" text="1" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+      <Button fx:id="F2" mnemonicParsing="false" onAction="#fighting" prefHeight="14.0" prefWidth="14.0" text="2" GridPane.columnIndex="19" GridPane.rowIndex="15" />
+   </children>
+</GridPane>
