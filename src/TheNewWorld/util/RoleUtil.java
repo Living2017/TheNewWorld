@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Random;
+import java.util.Set;
 import java.util.UUID;
 
 import org.json.JSONArray;
@@ -75,6 +77,114 @@ public class RoleUtil {
 			}
 		}
 	}
+	
+	public static Role randomRole(){
+		Set<String> set =roleNamePathMap.keySet();
+		String[] names = set.toArray(new String[set.size()]);
+		Random random = new Random();
+		int index = random.nextInt(names.length);
+		try {
+			return getRoleByName(names[index]);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	public static Role getRoleByName(String name) throws Exception {
+		init();
+		String path = roleNamePathMap.get(name);
+		File file = new File(path);
+		FileInputStream fileInputStream =null;
+		InputStreamReader inputStreamReader= null;
+		BufferedReader bReader = null;
+		Role role = null;
+		try {
+			fileInputStream = new FileInputStream(file);
+			inputStreamReader = new InputStreamReader(fileInputStream);
+			bReader=new BufferedReader(inputStreamReader);
+			String string=null;
+			role = new Role();
+			role.setName(name);
+			while((string=bReader.readLine()) != null) {
+				String str=string.split("\\=")[1];
+				if(string.contains("vocation")) {
+					role.setVocation(str);
+					continue;
+				}else if(string.contains("gender")) {
+					role.setGender(str);
+					continue;
+				}else if(string.contains("id")) {
+					role.setId(str);
+					continue;
+				}
+				Integer integer = null;
+				try {
+					integer = Integer.valueOf(str);
+				} catch (Exception e) {}
+				if(string.contains("level")) {
+					role.setLevel(integer);
+					continue;
+				}else if(string.contains("life")) {
+					role.setLife(integer);
+					continue;
+				}else if(string.contains("mana")) {
+					role.setMana(integer);
+					continue;
+				}else if(string.contains("attack")) {
+					role.setAttack(integer);
+					continue;
+				}else if(string.contains("defense")) {
+					role.setDefense(integer);
+					continue;
+				}else if(string.contains("physique")) {
+					role.setPhysique(integer);
+					continue;
+				}else if(string.contains("power")) {
+					role.setPower(integer);
+					continue;
+				}else if(string.contains("nimble")) {
+					role.setNimble(integer);
+					continue;
+				}else if(string.contains("intelligence")) {
+					role.setIntelligence(integer);
+					continue;
+				}
+				Double double1 = null;
+				try {
+					double1 = Double.valueOf(str);
+				} catch (Exception e) {}
+				if(string.contains("attackDistance")) {
+					role.setAttackDistance(double1);
+					continue;
+				}else if(string.contains("attackRate")) {
+					role.setAttackRate(double1);
+					continue;
+				}else if(string.contains("attackSpeed")) {
+					role.setAttackSpeed(double1);
+					continue;
+				}else if(string.contains("pace")) {
+					role.setPace(double1);
+					continue;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				bReader.close();
+				inputStreamReader.close();
+				fileInputStream.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return role;
+	}
+	
+	
 	
 	public static boolean delteRole(String name) {
 		init();

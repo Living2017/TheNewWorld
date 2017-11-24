@@ -466,19 +466,20 @@ public class MainApp extends Application {
 			
 			GridPane gp = (GridPane) loader.load();
 			
-			Button F1= (Button) gp.lookup("#F1");
-			Button F2= (Button) gp.lookup("#F2");
-			
 			gp.setOnMouseClicked(e->{
-				F1.setStyle("-fx-background-color:red;");
-				F2.setStyle("-fx-background-color:green;");
-				if(dialogStage.isFullScreen()) {
-					dialogStage.setFullScreen(false);
-				}else {
-					dialogStage.setFullScreen(true);
-				}
+				Button button = new Button();
+				String name =RoleUtil.randomRole().getName();
+				if(gp.lookup("#"+name) == null) {
+					button.setId(name);
+					button.setText(name);
+					int rowNum = gp.getRowConstraints().size();
+					int columnNum = gp.getColumnConstraints().size();
+					Random random = new Random();
+					int rowIndex = random.nextInt(rowNum);
+					int columnIndex = random.nextInt(columnNum);
+					gp.add(button, rowIndex, columnIndex,2,1);
+				};
 			});
-			
 			
 			dialogStage = new Stage();
 			dialogStage.setTitle("战斗吧勇士，为了荣耀，为了自由！");
