@@ -1,5 +1,6 @@
 package TheNewWorld.view;
 
+import TheNewWorld.util.FightingThread;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -14,49 +15,27 @@ public class FightingController {
 	@FXML
 	private Button F2;
 	
-	@SuppressWarnings("static-access")
+	int riF1;
+	int ciF1;
+	int riF2;
+	int ciF2;
+	
+	boolean a =false;
+	
+	Thread dThread ;
+	
 	@FXML
 	private void fighting() {
-		int riF1 = gp.getRowIndex(F1);
-		int ciF1 = gp.getColumnIndex(F1);
-		int riF2 = gp.getRowIndex(F2);
-		int ciF2 = gp.getColumnIndex(F2);
-		
-		if((riF1==riF2&&Math.abs(ciF1-ciF2)==1)
-				|| (ciF1==ciF2&&Math.abs(riF1-riF2)==1)) {
-			return;
-		}
 		
 		
+		FightingThread fightingThread = new FightingThread(gp, F1, F1, ciF1, ciF1, ciF1, ciF1);
 		
-		
-		if(riF1<12) {
-			gp.setRowIndex(F1,riF1+1);
-		}else if(riF1>12) {
-			gp.setRowIndex(F1,riF1-1);
-		}
-		
-		else if(ciF1<12) {
-			gp.setColumnIndex(F1,ciF1+1);
-		}
-		else if(ciF1>12) {
-			gp.setColumnIndex(F1,ciF1-1);
-		}
-		
-		if(riF2<12) {
-			gp.setRowIndex(F2,riF2+1);
-		}else if(riF2>12) {
-			gp.setRowIndex(F2,riF2-1);
-		}
-		
-		else if(ciF2<12) {
-			gp.setColumnIndex(F2,ciF2+1);
-		}
-		else if(ciF2>12) {
-			gp.setColumnIndex(F2,ciF2-1);
-		}
+		fightingThread.start();
+
 
 	}
+	
+
 	
 	
 	public String message;

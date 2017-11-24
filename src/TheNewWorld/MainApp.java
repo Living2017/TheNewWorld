@@ -472,6 +472,11 @@ public class MainApp extends Application {
 			gp.setOnMouseClicked(e->{
 				F1.setStyle("-fx-background-color:red;");
 				F2.setStyle("-fx-background-color:green;");
+				if(dialogStage.isFullScreen()) {
+					dialogStage.setFullScreen(false);
+				}else {
+					dialogStage.setFullScreen(true);
+				}
 			});
 			
 			
@@ -491,11 +496,9 @@ public class MainApp extends Application {
 			dialogStage.setResizable(false);
 			dialogStage.setAlwaysOnTop(false);
 			
-			dialogStage.showAndWait();
-			if(controller.message!=null) {
-				ta.appendText("\n"+controller.message);
-			}
+			dialogStage.setFullScreen(true);
 			
+			dialogStage.showAndWait();
 			return controller.message;
 		} catch (Exception e) {
 			e.printStackTrace();
