@@ -1,7 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root {  
-     -fx-background-color: rgb(0,0,0)
+     -fx-background-color: rgb(199,238,206)
 } 
 Label{
 	-fx-font-size: 19PX;
@@ -11,4 +11,12 @@ Label{
 #useful{
 	-fx-font-size: 15PX;
 	
+}
+Button{
+	-fx-background-color: red;
+	-fx-pref-width: 40;
+	-fx-border-width: 0;
+}
+GridPane{
+	-fx-grid-lines-visible: true;
 }

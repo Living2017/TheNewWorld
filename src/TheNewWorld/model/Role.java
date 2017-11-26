@@ -36,6 +36,20 @@ public class Role {
 	//移动速度
 	private Double pace ;
 	
+	public String toString() {
+		String string="";
+		string+="id="+getId()+"\n";
+		string+="name="+getName()+"\n";
+		string+="gender="+getGender()+"\n";
+		string+="vocation="+getVocation()+"\n";
+		string+="level="+getLevel()+"\n";
+		string+="life="+getLife()+"\n";
+		string+="mana="+getMana()+"\n";
+		string+="attack="+getAttack()+"\n";
+		string+="defense="+getDefense()+"\n";
+		return string;
+	}
+	
 	//getter and setter
 	public String getId() {
 		return id;

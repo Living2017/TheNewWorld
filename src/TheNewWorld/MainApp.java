@@ -30,8 +30,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
@@ -466,12 +468,19 @@ public class MainApp extends Application {
 			
 			GridPane gp = (GridPane) loader.load();
 			
+			gp.setStyle("-fx-grid-lines-visible: true;");
 			gp.setOnMouseClicked(e->{
 				Button button = new Button();
-				String name =RoleUtil.randomRole().getName();
+				Tooltip tooltip = new Tooltip();
+				button.setTooltip(tooltip);
+				Role  role=RoleUtil.randomRole();
+				tooltip.setText(role.toString());
+				tooltip.setStyle("-fx-font-size: 19PX;");
+				String name =role.getName();
 				if(gp.lookup("#"+name) == null) {
 					button.setId(name);
 					button.setText(name);
+					//button.setStyle("-fx-border-");
 					int rowNum = gp.getRowConstraints().size();
 					int columnNum = gp.getColumnConstraints().size();
 					Random random = new Random();

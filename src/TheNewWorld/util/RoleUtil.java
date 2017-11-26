@@ -132,7 +132,7 @@ public class RoleUtil {
 				}else if(string.contains("mana")) {
 					role.setMana(integer);
 					continue;
-				}else if(string.contains("attack")) {
+				}else if(string.contains("attack(攻击力)")) {
 					role.setAttack(integer);
 					continue;
 				}else if(string.contains("defense")) {
