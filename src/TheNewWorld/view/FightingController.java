@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class FightingController {
+public class FightingController {//
 
 	@FXML
 	private GridPane gp;
